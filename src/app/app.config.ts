@@ -3,8 +3,6 @@ import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 
-export const environment = {
-  production: false,
-  apiUrl: 'tu-url-de-api'
+export const appConfig: ApplicationConfig = {
+  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes)]
 };
-

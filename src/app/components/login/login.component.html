@@ -1,15 +1,17 @@
 <div class="login-container">
+  <div class="login-box">
+    <img src="https://segel.com.py/web/image/website/1/logo/SEGEL%20Soluciones%20Inteligentes?unique=9f542ab" alt="Twitter Logo" class="logo">
     <h2>Login</h2>
-    <form (ngSubmit)="login()">
-      <div>
-        <label for="username">Username</label>
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="username">Username:</label>
         <input type="text" id="username" [(ngModel)]="username" name="username" required>
       </div>
-      <div>
-        <label for="password">Password</label>
+      <div class="form-group">
+        <label for="password">Password:</label>
         <input type="password" id="password" [(ngModel)]="password" name="password" required>
       </div>
       <button type="submit">Login</button>
     </form>
   </div>
-  
+</div>

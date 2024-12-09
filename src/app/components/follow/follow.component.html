@@ -1,0 +1,41 @@
+<div class="container">
+  <aside class="sidebar">
+    <nav>
+      <ul>
+        <li><a routerLink="/feed">Inicio</a></li>
+        <li><a routerLink="/login" (click)="logout()">Cerrar Sesión</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <main class="follow">
+    <div class="tabs">
+      <button (click)="switchTab('followers')" [class.active]="selectedTab === 'followers'">Seguidores</button>
+      <button (click)="switchTab('following')" [class.active]="selectedTab === 'following'">Seguidos</button>
+    </div>
+
+    <div *ngIf="selectedTab === 'followers'" class="list">
+      <div *ngFor="let follower of followers" class="user-card">
+        <div class="user-info">
+          <img [src]="follower.profilePicture" alt="Profile Picture" class="user-img">
+          <p>{{ follower.name }} <span>({{ '@' + follower.userName }})</span></p>
+        </div>
+        <button (click)="toggleFollow(follower.userId)">
+          {{ following.includes(follower.userId) ? 'Siguiendo' : 'Seguir' }}
+        </button>
+      </div>
+    </div>
+
+    <div *ngIf="selectedTab === 'following'" class="list">
+      <div *ngFor="let followed of following" class="user-card">
+        <div class="user-info">
+          <img [src]="followed.profilePicture" alt="Profile Picture" class="user-img">
+          <p>{{ followed.name }} <span>({{ '@' + followed.userName }})</span></p>
+        </div>
+        <button (click)="toggleFollow(followed.userId)">
+          {{ following.includes(followed.userId) ? 'Siguiendo' : 'Seguir' }}
+        </button>
+      </div>
+    </div>
+  </main>
+</div>

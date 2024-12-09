@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "twitter-clone-frontend": {
+    "front-final": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/twitter-clone-frontend",
+            "outputPath": "dist/front-final",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -59,10 +59,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "twitter-clone-frontend:build:production"
+              "buildTarget": "front-final:build:production"
             },
             "development": {
-              "buildTarget": "twitter-clone-frontend:build:development"
+              "buildTarget": "front-final:build:development"
             }
           },
           "defaultConfiguration": "development"

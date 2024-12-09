@@ -1,0 +1,28 @@
+<div class="container">
+  <aside class="sidebar">
+    <nav>
+      <ul>
+        <li><a routerLink="/feed">Inicio</a></li>
+        <li><a routerLink="/login" (click)="logout()">Cerrar Sesión</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <main class="profile">
+    <div class="profile-header">
+      <div class="profile-info">
+        <h2>{{ name }}</h2>
+        <button (click)="toggleFollow()" [disabled]="isFollowing === null" class="follow-button">
+          {{ isFollowing ? 'Siguiendo' : 'Seguir' }}
+        </button>
+      </div>
+      <div class="profile-stats">
+        <p><strong>Seguidores:</strong> <a [routerLink]="['/profile', userName, 'followers']">{{ followersCount }}</a></p>
+        <p><strong>Seguidos:</strong> <a [routerLink]="['/profile', userName, 'following']">{{ followingCount }}</a></p>
+      </div>
+    </div>
+
+    <div class="profile-content">
+    </div>
+  </main>
+</div>

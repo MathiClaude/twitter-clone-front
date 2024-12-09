@@ -1,20 +1,18 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AppRoutingModule } from './app.routes';
-import { AuthService } from './services/auth.service';
-import { TweetService } from './services/tweet.service';
-import { UserService } from './services/user.service';
+import { RouterModule } from '@angular/router'; // Importa RouterModule
+
+import { routes } from './app.routes'; // Importa las rutas desde tu archivo de rutas
 
 @NgModule({
   imports: [
     BrowserModule,
-    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    RouterModule.forRoot(routes) // Configura las rutas
   ],
-  providers: [AuthService, TweetService, UserService]
+  providers: [],
+  bootstrap: [] // No necesitamos bootstrap aquí, ya que estamos usando componentes standalone
 })
 export class AppModule { }

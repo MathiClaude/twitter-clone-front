@@ -1,9 +1,13 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
+  standalone: true,
+  imports: [CommonModule, FormsModule, ReactiveFormsModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
@@ -11,15 +15,20 @@ export class LoginComponent {
   username: string = '';
   password: string = '';
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private router: Router, private authService: AuthService) {}
 
-  onSubmit() {
+  onSubmit(): void {
     this.authService.login({ username: this.username, password: this.password }).subscribe(
-      (response: any) => {
-        // manejar la respuesta
+      response => {
+        localStorage.setItem('token', response.token);
+        localStorage.setItem('userId', response.userId);
+        localStorage.setItem('userName', response.userName);
+        localStorage.setItem('name', response.name);
+        localStorage.setItem('email', response.email);
+        this.router.navigate(['/feed']);
       },
-      (error: any) => {
-        // manejar el error
+      error => {
+        console.error('Error during login:', error);
       }
     );
   }

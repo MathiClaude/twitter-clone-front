@@ -14,16 +14,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'twitter-clone-frontend' title`, () => {
+  it(`should have the 'front-final' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('twitter-clone-frontend');
+    expect(app.title).toEqual('front-final');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, twitter-clone-frontend');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, front-final');
   });
 });

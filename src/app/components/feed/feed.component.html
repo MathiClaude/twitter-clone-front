@@ -1,0 +1,31 @@
+<div class="container">
+  <aside class="sidebar">
+    <nav>
+      <ul>
+        <li><a routerLink="/feed">Inicio</a></li>
+        <li><a [routerLink]="['/profile', userName]">Perfil</a></li>
+        <li><a routerLink="/login" (click)="logout()">Cerrar Sesión</a></li>
+      </ul>
+    </nav>
+    <div class="user-legend">
+      <p>Logueado como: <strong>{{ userName }}</strong></p>
+    </div>
+  </aside>
+  
+
+  <main class="feed">
+    <div class="new-tweet">
+      <textarea [(ngModel)]="newTweet" placeholder="¿Qué está pasando?" maxlength="280"></textarea>
+      <div class="tweet-controls">
+        <span>{{ newTweet.length }}/280</span>
+        <button (click)="postTweet()" [disabled]="newTweet.length === 0 || newTweet.length > 280">Twittear</button>
+      </div>
+    </div>
+    <div *ngFor="let tweet of tweets" class="tweet">
+      <div class="tweet-header">
+        <strong><a [routerLink]="['/profile', tweet.userId]">{{ tweet.name }}</a></strong> <span>&commat;{{ tweet.userName }}</span>
+      </div>
+      <p>{{ tweet.text }}</p>
+    </div>
+  </main>
+</div>

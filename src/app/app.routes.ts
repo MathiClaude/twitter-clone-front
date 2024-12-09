@@ -1,25 +1,15 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './components/home/home.component';
+import { Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
-import { TweetComponent } from './components/tweet/tweet.component';
-import { UserComponent } from './components/user/user.component';
+import { FeedComponent } from './components/feed/feed.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { FollowComponent } from './components/follow/follow.component'; 
 
-const routes: Routes = [
-  { path: '', component: HomeComponent },
+export const routes: Routes = [
+  { path: '', pathMatch: 'full', redirectTo: '/login' },
   { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'tweet', component: TweetComponent },
-  { path: 'user', component: UserComponent }
+  { path: 'feed', component: FeedComponent },
+  { path: 'profile/:userName', component: ProfileComponent },
+  { path: 'profile', component: ProfileComponent },
+  { path: 'profile/:userName/followers', component: FollowComponent },
+  { path: 'profile/:userName/following', component: FollowComponent },
 ];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-export class AppRoutingModule {}
-
-export { routes };
-
-

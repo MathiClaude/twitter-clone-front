@@ -1,31 +1,17 @@
-import { enableProdMode } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
-import { environment } from './environments/environment';
-import { AppComponent } from './app/app.component';
+import { AppComponent } from './app/app.component';  // Ajusta la ruta según corresponda
+import { provideRouter } from '@angular/router';
+import { routes } from './app/app.routes';  // Ajusta la ruta según corresponda
+import { provideHttpClient } from '@angular/common/http';
 import { importProvidersFrom } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AppRoutingModule } from './app/app.routes';
-import { AuthService } from './app/services/auth.service';
-import { TweetService } from './app/services/tweet.service';
-import { UserService } from './app/services/user.service';
-
-if (environment.production) {
-  enableProdMode();
-}
 
 bootstrapApplication(AppComponent, {
   providers: [
-    importProvidersFrom(
-      BrowserModule,
-      HttpClientModule,
-      FormsModule,
-      ReactiveFormsModule,
-      AppRoutingModule
-    ),
-    AuthService,
-    TweetService,
-    UserService
+    provideRouter(routes),
+    provideHttpClient(),
+    importProvidersFrom(BrowserModule, FormsModule, ReactiveFormsModule)
   ]
-}).catch(err => console.error(err));
+})
+.catch(err => console.error(err));
